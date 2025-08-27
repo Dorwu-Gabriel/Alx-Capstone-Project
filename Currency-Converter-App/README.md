@@ -3,8 +3,7 @@
 **Author:** Dorwu Gabriel  
 **Date:** August 2025
 
-![Logo](./src/assets/logo.png)
- # CURRENCY CONVERTER APP 
+![Logo](./src/assets/logo.png) # CURRENCY CONVERTER APP 
   
   A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API.
   
@@ -158,4 +157,5 @@ MIT License
 •	ExchangeRate-API
 •	Tailwind CSS
 •	Zustand
+
 
