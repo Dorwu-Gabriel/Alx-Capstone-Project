@@ -3,7 +3,7 @@
 **Author:** Dorwu Gabriel  
 **Date:** August 2025
 
-<img src="./src/assets/logo.png" alt="Logo" width="25"/> **CURRENCY CONVERTER APP**
+<img src="./src/assets/logo.png" alt="Logo" width="25"/> **#CURRENCY CONVERTER APP**
   
   A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API.
   Built with React, Zustand for state management, and Tailwind CSS for styling. Deployed on Vercel.
@@ -156,6 +156,7 @@ MIT License
 •	ExchangeRate-API
 •	Tailwind CSS
 •	Zustand
+
 
 
 
