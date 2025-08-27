@@ -1,17 +1,94 @@
 # ALX Capstone Project Documentation
-**Project Name: Currency Converter App
-**Author: Dorwu Gabriel
-**Date: August 2025
+**Project Name:** Currency Converter App  
+**Author:** Dorwu Gabriel  
+**Date:** August 2025
 
-# CURRENCY CONVERTER APP
-A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API. Built with React, Zustand for state management, and Tailwind CSS for styling. Deployed on Vercel.
+![Logo](./src/assets/logo.png)
+ # CURRENCY CONVERTER APP 
+  
+  A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API.
+  
+  Built with React, Zustand for state management, and Tailwind CSS for styling. Deployed on Vercel.
 
-# 📌 Project Overview
-The Currency Converter App allows users to select source and target currencies, enter an amount, and view the converted result using the ExchangeRate-API.
 
-# 🛠 Tech Stack
-React | Zustand | Tailwind CSS | ExchangeRate-API | Vercel
+---
 
+## 🎥 Demo
+
+### Live Demo
+[![Live Demo](https://img.shields.io/badge/View-Live%20Demo-green?style=for-the-badge)](https://your-vercel-app-url.vercel.app)
+
+### App in Action
+![Currency Converter Demo](./src/assets/CurrencyApp-Demo.gif)
+
+## 📸 Screenshots
+
+### Light Theme
+![Light Theme Screenshot](./src/assets/CurrencyApp-Light-Theme.png)
+
+### Dark Theme
+![Dark Theme Screenshot](./src/assets/CurrencyApp-Dark-Theme.png)
+
+## 📌 Project Overview
+The Currency Converter App allows users to:
+- Select source and target currencies from a comprehensive list
+- Enter any amount for conversion
+- View real-time converted results
+- Toggle between light and dark themes
+- View conversion history
+- Access the app on any device
+
+## 🛠 Tech Stack
+- **Frontend:** React
+- **State Management:** Zustand
+- **Styling:** Tailwind CSS
+- **API:** ExchangeRate-API
+- **Deployment:** Vercel
+
+## 🚀 Features
+- Real-time currency conversion
+- Swap currencies with a single click
+- Dark/Light mode toggle
+- Responsive design for all devices
+- Clean and intuitive user interface
+- Quick access to popular currency pairs
+
+## 🏗️ Getting Started
+
+### Prerequisites
+- Node.js (v14 or later)
+- npm or yarn
+
+### Installation
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/currency-converter-app.git
+   cd currency-converter-app
+   ```
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. Create a `.env` file in the root directory and add your API key:
+   ```
+   VITE_EXCHANGE_RATE_API_KEY=your_api_key_here
+   ```
+4. Start the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+## 📝 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+- [ExchangeRate-API](https://www.exchangerate-api.com/) for the currency data
+- [React Icons](https://react-icons.github.io/react-icons/) for the beautiful icons
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
 # ✨ Features
 •	Real-time currency conversion
 •	Responsive design
