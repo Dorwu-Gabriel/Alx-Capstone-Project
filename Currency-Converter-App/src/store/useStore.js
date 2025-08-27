@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { getCachedRates } from '../services/api';
 
-export const useStore = create((set, get) => ({
+const store = (set, get) => ({
   // State
   amount: 1,
   fromCurrency: 'USD',
@@ -14,7 +14,26 @@ export const useStore = create((set, get) => ({
   darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
   
   // Actions
-  setAmount: (amount) => set({ amount: parseFloat(amount) || 0 }),
+  setAmount: (value) => {
+    // Handle empty string or invalid input
+    if (value === '' || isNaN(value)) {
+      return set({ amount: 0 });
+    }
+    
+    const numValue = parseFloat(value);
+    if (isNaN(numValue)) return;
+    
+    // Update the amount
+    set({ amount: numValue });
+    
+    // Get current state
+    const { exchangeRates } = get();
+    
+    // If we have rates, trigger a re-render by updating a timestamp
+    if (exchangeRates && Object.keys(exchangeRates).length > 0) {
+      set({ lastUpdated: new Date().toISOString() });
+    }
+  },
   setFromCurrency: (currency) => set({ fromCurrency: currency }),
   setToCurrency: (currency) => set({ toCurrency: currency }),
   toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
@@ -25,42 +44,56 @@ export const useStore = create((set, get) => ({
     toCurrency: state.fromCurrency
   })),
   
-  // Fetch exchange rates
+  // Fetch exchange rates with error handling and stale data support
   fetchExchangeRates: async () => {
     const { fromCurrency } = get();
     set({ loading: true, error: null });
     
     try {
-      const { rates, date } = await getCachedRates(fromCurrency);
+      const result = await getCachedRates(fromCurrency);
+      
+      // Check if we're using stale data
+      if (result.isStale) {
+        console.warn('Using stale exchange rate data');
+      }
       
       set({
-        exchangeRates: rates,
-        lastUpdated: date,
+        exchangeRates: result.rates || {},
+        lastUpdated: result.date || new Date().toISOString(),
         loading: false,
-        error: null
+        error: result.error || null,
+        isStale: result.isStale || false
       });
       
-      return rates;
+      return result.rates || {};
     } catch (error) {
       console.error('Error in fetchExchangeRates:', error);
+      const errorMessage = error.status === 429 
+        ? 'API rate limit exceeded. Please try again later.'
+        : error.message || 'Failed to fetch exchange rates';
+      
       set({ 
-        error: error.message || 'Failed to fetch exchange rates',
-        loading: false 
+        error: errorMessage,
+        loading: false,
+        isStale: false
       });
-      throw error;
+      
+      // Re-throw the error for error boundaries
+      throw new Error(errorMessage);
     }
   },
   
   // Calculate converted amount
   getConvertedAmount: () => {
-    const { amount, fromCurrency, toCurrency, exchangeRates } = get();
+    const state = get();
+    const { amount, fromCurrency, toCurrency, exchangeRates } = state;
     
     if (!exchangeRates || !exchangeRates[toCurrency] || fromCurrency === toCurrency) {
-      return amount.toFixed(2);
+      return (parseFloat(amount) || 0).toFixed(2);
     }
     
     const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
-    const result = amount * rate;
+    const result = (parseFloat(amount) || 0) * rate;
     
     // Format the result to show appropriate decimal places
     if (result >= 1000) {
@@ -101,4 +134,26 @@ export const useStore = create((set, get) => ({
       maximumFractionDigits: 6
     }).format(value);
   }
-}));
+});
+
+export const useStore = create(store);
+
+export const getConvertedAmount = (state) => {
+  const { amount, fromCurrency, toCurrency, exchangeRates } = state;
+  
+  if (!exchangeRates || !exchangeRates[toCurrency] || fromCurrency === toCurrency) {
+    return (parseFloat(amount) || 0).toFixed(2);
+  }
+  
+  const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+  const result = (parseFloat(amount) || 0) * rate;
+  
+  // Format the result to show appropriate decimal places
+  if (result >= 1000) {
+    return result.toFixed(2);
+  } else if (result >= 1) {
+    return result.toFixed(4);
+  } else {
+    return result.toFixed(6);
+  }
+};
