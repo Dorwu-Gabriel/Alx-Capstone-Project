@@ -3,7 +3,7 @@
 **Author:** Dorwu Gabriel  
 **Date:** August 2025
 
-![Logo](./src/assets/logo.png)
+![Logo](./Alx-Capstone-Project/Currency-Converter-App/src/assets/logo.png)
  # CURRENCY CONVERTER APP 
   
   A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API.
@@ -19,15 +19,15 @@
 [![Live Demo](https://img.shields.io/badge/View-Live%20Demo-green?style=for-the-badge)](https://your-vercel-app-url.vercel.app)
 
 ### App in Action
-![Currency Converter Demo](./src/assets/CurrencyApp-Demo.gif)
+![Currency Converter Demo](./Alx-Capstone-Project/Currency-Converter-App/src/assets/CurrencyApp-Demo.gif)
 
 ## 📸 Screenshots
 
 ### Light Theme
-![Light Theme Screenshot](./src/assets/CurrencyApp-Light-Theme.png)
+![Light Theme Screenshot](./Alx-Capstone-Project/Currency-Converter-App/src/assets/CurrencyApp-Light-Theme.png)
 
 ### Dark Theme
-![Dark Theme Screenshot](./src/assets/CurrencyApp-Dark-Theme.png)
+![Dark Theme Screenshot](./Alx-Capstone-Project/Currency-Converter-App/src/assets/CurrencyApp-Dark-Theme.png)
 
 ## 📌 Project Overview
 The Currency Converter App allows users to:
@@ -158,3 +158,4 @@ MIT License
 •	ExchangeRate-API
 •	Tailwind CSS
 •	Zustand
+
