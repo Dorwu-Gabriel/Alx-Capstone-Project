@@ -3,14 +3,15 @@
 **Author:** Dorwu Gabriel  
 **Date:** August 2025
 
-<div align="center">
-  <img src="./src/assets/logo.png" alt="Currency Converter Logo" width="120" />
+![Dark Theme Screenshot](./src/assets/logo.png)
+ # CURRENCY CONVERTER APP 
   
-  # CURRENCY CONVERTER APP
+  A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API.
   
-  A responsive web application that enables users to convert between various currencies in real-time using live exchange rate data from a public API. 
   Built with React, Zustand for state management, and Tailwind CSS for styling. Deployed on Vercel.
-</div>
+
+
+---
 
 ## 🎥 Demo
 
@@ -23,10 +24,10 @@
 ## 📸 Screenshots
 
 ### Light Theme
-![Light Theme Screenshot](./src/assets/CurrencyApp-Screenshot.png)
+![Light Theme Screenshot](./src/assets/CurrencyApp-Light-Theme.png)
 
 ### Dark Theme
-![Dark Theme Screenshot](./src/assets/CurrencyApp-Dark-Screenshot.png)
+![Dark Theme Screenshot](./src/assets/CurrencyApp-Dark-Theme.png)
 
 ## 📌 Project Overview
 The Currency Converter App allows users to:
